@@ -65,6 +65,14 @@ public class UserDAO {
                         .findAll();
         return realmResults;
     }
+    public RealmResults<User> getAllUserAND(String name,String email) {
+        RealmResults<User> realmResults =
+                realm.where(User.class)
+                        .equalTo("email",email)
+                        .equalTo("name",name)
+                        .findAll();
+        return realmResults;
+    }
 
     public User getUserByEmail(String email) {
         User user = realm.where(User.class).equalTo("email", email).findFirst();
